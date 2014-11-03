@@ -34,7 +34,7 @@ public class Hangman extends ConsoleProgram {
 				if (word.indexOf(guessChar) != -1)
 					characterIsCorrect(guessChar, word, displayOfWord);
 				else
-					characterIsIncorrect(guessChar);
+					characterIsIncorrect(guessChar, word);
 			}
 			
 		}
@@ -76,9 +76,21 @@ public class Hangman extends ConsoleProgram {
     	}	
     }
     
-    private void characterIsIncorrect(char guessedChar) {
+    /* Method: characterIsIncorrect */
+    /** Notifies the user that his guess was incorrect. If NUM_GUESSES = 0,
+     * the user gets notified that the game is over.
+     * @param guessedChar The character that the user guessed.
+     * @param secretWord The secret word that the user has to guess.
+     */
+    private void characterIsIncorrect(char guessedChar, String secretWord) {
     	println("There are no " + guessedChar + "'s in the word.");
     	NUM_GUESSES --;
+    	
+    	if (NUM_GUESSES == 0) {
+    		println("You're completely hung.");
+    		println("The word was: " + secretWord);
+    		println("You lose.");
+    	}
     }
     
     /* Method: getNextWord */
@@ -118,7 +130,10 @@ public class Hangman extends ConsoleProgram {
     		return false;
     }
     
+    /** Random number generator instance variable */
     RandomGenerator rgen =  RandomGenerator.getInstance();
+   
+    /** Number of guesses remaining */
     private int NUM_GUESSES;
 
 }
