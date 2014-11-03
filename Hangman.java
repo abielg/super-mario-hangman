@@ -32,7 +32,7 @@ public class Hangman extends ConsoleProgram {
 				char guessChar = guessString.charAt(0);
 				guessChar = Character.toUpperCase(guessChar);
 				if (word.indexOf(guessChar) != -1)
-					characterIsCorrect(guessChar, word, displayOfWord);
+					characterIsCorrect(guessChar, word);
 				else
 					characterIsIncorrect(guessChar, word);
 			}
@@ -53,23 +53,23 @@ public class Hangman extends ConsoleProgram {
      * @param displayedWord The current status of the secret word, represented by
      * 		  dashes in any characters that the user hasn't guessed.
      */
-    private void characterIsCorrect(char guessedChar, String secretWord, String displayedWord) {
+    private void characterIsCorrect(char guessedChar, String secretWord) {
     	println("That guess is correct.");
     	for (int i = 0; i < secretWord.length(); i++) {
     		if (guessedChar == secretWord.charAt(i)) {
     			if (secretWord.length() == 1)
-    				displayedWord = "" + guessedChar;
+    				displayOfWord = "" + guessedChar;
     			else if (i==0)
-    				displayedWord = guessedChar + displayedWord.substring(i+1);
-    			else if (i== displayedWord.length() - 1)
-    				displayedWord = displayedWord.substring(0,i) + guessedChar;
+    				displayOfWord = guessedChar + displayOfWord.substring(i+1);
+    			else if (i == secretWord.length() - 1)
+    				displayOfWord = displayOfWord.substring(0,i) + guessedChar;
     			else
-    				displayedWord = displayedWord.substring(0,i) + guessedChar + 
-    												displayedWord.substring(i+1);
+    				displayOfWord = displayOfWord.substring(0,i) + guessedChar + 
+    				displayOfWord.substring(i+1);
     		}
     	}
     	
-    	if (displayedWord.equals(secretWord)) {
+    	if (displayOfWord.equals(secretWord)) {
     		println("You guessed the word: " + secretWord);
     		println("You win.");
     		NUM_GUESSES = 0;
