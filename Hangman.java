@@ -31,12 +31,55 @@ public class Hangman extends ConsoleProgram {
 			else {
 				char guessChar = guessString.charAt(0);
 				guessChar = Character.toUpperCase(guessChar);
+				if (word.indexOf(guessChar) != -1)
+					characterIsCorrect(guessChar, word, displayOfWord);
+				else
+					characterIsIncorrect(guessChar);
 			}
 			
 		}
 		
 		
 	}
+    
+    /* Method: characterIsCorrect */
+    /** Notifies the user that he correctly guessed a character in the secret
+     * word. Modifies the displayed word by changing the respective dash(es)
+     * into the character the user just guessed. If this was the last character
+     * needed to complete the word, the user is notified, and NUM_GUESSES is
+     * changed to 0 to break the while loop in the run method.
+     * @param guessedChar The character that the user correctly guessed.
+     * @param secretWord The secret word (String) that the user is trying to guess.
+     * @param displayedWord The current status of the secret word, represented by
+     * 		  dashes in any characters that the user hasn't guessed.
+     */
+    private void characterIsCorrect(char guessedChar, String secretWord, String displayedWord) {
+    	println("That guess is correct.");
+    	for (int i = 0; i < secretWord.length(); i++) {
+    		if (guessedChar == secretWord.charAt(i)) {
+    			if (secretWord.length() == 1)
+    				displayedWord = "" + guessedChar;
+    			else if (i==0)
+    				displayedWord = guessedChar + displayedWord.substring(i+1);
+    			else if (i== displayedWord.length() - 1)
+    				displayedWord = displayedWord.substring(0,i) + guessedChar;
+    			else
+    				displayedWord = displayedWord.substring(0,i) + guessedChar + 
+    												displayedWord.substring(i+1);
+    		}
+    	}
+    	
+    	if (displayedWord.equals(secretWord)) {
+    		println("You guessed the word: " + secretWord);
+    		println("You win.");
+    		NUM_GUESSES = 0;
+    	}	
+    }
+    
+    private void characterIsIncorrect(char guessedChar) {
+    	println("There are no " + guessedChar + "'s in the word.");
+    	NUM_GUESSES --;
+    }
     
     /* Method: getNextWord */
     /** Returns a random String from the list of word found in the lexicon.
