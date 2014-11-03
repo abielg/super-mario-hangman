@@ -11,14 +11,14 @@ public class HangmanCanvas extends GCanvas {
 /** Resets the display so that only the scaffold appears */
 	public void reset() {
 		this.removeAll();
-		double scaffoldX = (getWidth() / 2) - ROPE_LENGTH;
+		double scaffoldX = (getWidth() / 2) - BEAM_LENGTH;
 		double scaffoldY = ((getWidth() - SCAFFOLD_HEIGHT) / 2) - SCAFFOLD_VERT_OFFSET;
 		//scaffold
 		add(new GLine(scaffoldX, scaffoldY, scaffoldX, scaffoldY + SCAFFOLD_HEIGHT));
 		//beam
 		add(new GLine(scaffoldX, scaffoldY, (scaffoldX + BEAM_LENGTH), scaffoldY));
 		//rope
-		add(new GLine((scaffoldX + BEAM_LENGTH), scaffoldY,(scaffoldX + BEAM_LENGTH), scaffoldY ));
+		add(new GLine((scaffoldX + BEAM_LENGTH), scaffoldY,(scaffoldX + BEAM_LENGTH), scaffoldY + ROPE_LENGTH));
 	}
 
 /**
