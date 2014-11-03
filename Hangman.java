@@ -35,11 +35,8 @@ public class Hangman extends ConsoleProgram {
 					characterIsCorrect(guessChar, word);
 				else
 					characterIsIncorrect(guessChar, word);
-			}
-			
+			}	
 		}
-		
-		
 	}
     
     /* Method: characterIsCorrect */
