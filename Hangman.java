@@ -20,6 +20,7 @@ public class Hangman extends ConsoleProgram {
 		println("Welcome to Hangman!");
 		NUM_GUESSES = 8;
 		displayOfWord = createDisplayOfWord(word);
+		setUpCanvas();
 		
 		while(NUM_GUESSES > 0) {
 			println("The word now looks like this: " + displayOfWord);
@@ -38,6 +39,15 @@ public class Hangman extends ConsoleProgram {
 			}	
 		}
 	}
+    
+    public void init() {
+    	canvas = new HangmanCanvas();
+    	add(canvas);
+    }
+    
+    private void setUpCanvas() {
+    	canvas.reset();
+    }
     
     /* Method: characterIsCorrect */
     /** Notifies the user that he correctly guessed a character in the secret
@@ -135,5 +145,7 @@ public class Hangman extends ConsoleProgram {
     
     /** String displayed to the user, with dashes for unsolved characters*/
     private String displayOfWord;
+    
+    private HangmanCanvas canvas;
 
 }
