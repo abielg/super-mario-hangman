@@ -19,7 +19,7 @@ public class Hangman extends ConsoleProgram {
 		
 		println("Welcome to Hangman!");
 		NUM_GUESSES = 8;
-		String displayOfWord = createDisplayOfWord(word);
+		displayOfWord = createDisplayOfWord(word);
 		
 		while(NUM_GUESSES > 0) {
 			println("The word now looks like this: " + displayOfWord);
@@ -135,5 +135,8 @@ public class Hangman extends ConsoleProgram {
    
     /** Number of guesses remaining */
     private int NUM_GUESSES;
+    
+    /** String displayed to the user, with dashes for unsolved characters*/
+    private String displayOfWord;
 
 }
