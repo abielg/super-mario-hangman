@@ -34,8 +34,9 @@ public class Hangman extends ConsoleProgram {
 				guessChar = Character.toUpperCase(guessChar);
 				if (word.indexOf(guessChar) != -1)
 					characterIsCorrect(guessChar, word);
-				else
+				else {
 					characterIsIncorrect(guessChar, word);
+				}
 			}	
 		}
 	}
@@ -98,6 +99,7 @@ public class Hangman extends ConsoleProgram {
     		println("The word was: " + secretWord);
     		println("You lose.");
     	}
+    	canvas.noteIncorrectGuess(guessedChar);
     }
     
     /* Method: getNextWord */
