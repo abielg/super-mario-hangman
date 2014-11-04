@@ -86,20 +86,21 @@ public class Hangman extends ConsoleProgram {
     
     /* Method: characterIsIncorrect */
     /** Notifies the user that his guess was incorrect. If NUM_GUESSES = 0,
-     * the user gets notified that the game is over.
+     * the user gets notified that the game is over. It also calls the
+     * noteIncorrectGuesses method to display the hangman's new bodypart and
+     * the character that has been incorrectly guessed.
      * @param guessedChar The character that the user guessed.
      * @param secretWord The secret word that the user has to guess.
      */
     private void characterIsIncorrect(char guessedChar, String secretWord) {
     	println("There are no " + guessedChar + "'s in the word.");
     	NUM_GUESSES --;
-    	
+    	canvas.noteIncorrectGuess(guessedChar);
     	if (NUM_GUESSES == 0) {
     		println("You're completely hung.");
     		println("The word was: " + secretWord);
     		println("You lose.");
     	}
-    	canvas.noteIncorrectGuess(guessedChar);
     }
     
     /* Method: getNextWord */
