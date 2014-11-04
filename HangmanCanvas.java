@@ -52,7 +52,7 @@ public class HangmanCanvas extends GCanvas {
 		incorrectChars.setLabel(chars + letter);
 		int incorrectGuesses = incorrectChars.getLabel().length();
 		
-		switch (incorrectGuesses) {
+		/*switch (incorrectGuesses) {
 			case 1: drawHead(); break;
 			case 2:drawBody(); break;
 			case 3: drawArm(-1); break;
@@ -61,12 +61,12 @@ public class HangmanCanvas extends GCanvas {
 			case 6: drawLeg(1); break;
 			case 7: drawFoot(-1); break;
 			case 8: drawFoot(1);
-		}
+		}*/
 	}
 	
 	private void drawhead() {
 		double x = (getWidth() / 2) - HEAD_RADIUS;
-		double y = 
+		double y;
 	}
 
 /* Constants for the simple version of the picture (in pixels) */
