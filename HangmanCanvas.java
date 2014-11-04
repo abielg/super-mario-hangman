@@ -12,7 +12,7 @@ public class HangmanCanvas extends GCanvas {
 	public void reset() {
 		this.removeAll();
 		double scaffoldX = (getWidth() / 2) - BEAM_LENGTH;
-		double scaffoldY = ((getHeight() - SCAFFOLD_HEIGHT) / 2) - SCAFFOLD_VERT_OFFSET;
+		scaffoldY = ((getHeight() - SCAFFOLD_HEIGHT) / 2) - SCAFFOLD_VERT_OFFSET;
 		//scaffold
 		add(new GLine(scaffoldX, scaffoldY, scaffoldX, scaffoldY + SCAFFOLD_HEIGHT));
 		//beam
@@ -24,12 +24,12 @@ public class HangmanCanvas extends GCanvas {
 		//and it will be updated with each method call to "displayWord".
 		wordDisplayed = new GLabel("");
 		wordDisplayed.setFont("Helvetica-24");
-		add(wordDisplayed, LABEL_X_OFFSET, WORD_Y_OFFSET);
+		add(wordDisplayed, LABEL_X_OFFSET, getHeight() - WORD_Y_OFFSET);
 		
 		//Same with the label of the incorrect characters.
 		incorrectChars = new GLabel("");
 		incorrectChars.setFont("Helvetica-15");
-		add(incorrectChars, LABEL_X_OFFSET, INCORRECT_CHARS_Y_OFFSET);
+		add(incorrectChars, LABEL_X_OFFSET, getHeight() - INCORRECT_CHARS_Y_OFFSET);
 	}
 
 /**
@@ -52,7 +52,7 @@ public class HangmanCanvas extends GCanvas {
 		incorrectChars.setLabel(chars + letter);
 		int incorrectGuesses = incorrectChars.getLabel().length();
 		
-		/*switch (incorrectGuesses) {
+		switch (incorrectGuesses) {
 			case 1: drawHead(); break;
 			case 2:drawBody(); break;
 			case 3: drawArm(-1); break;
@@ -61,12 +61,17 @@ public class HangmanCanvas extends GCanvas {
 			case 6: drawLeg(1); break;
 			case 7: drawFoot(-1); break;
 			case 8: drawFoot(1);
-		}*/
+		}
 	}
 	
-	private void drawhead() {
+	private void drawHead() {
 		double x = (getWidth() / 2) - HEAD_RADIUS;
-		double y;
+		double y = scaffoldY + ROPE_LENGTH;
+		add(new GOval(x, y, HEAD_RADIUS * 2, HEAD_RADIUS * 2));
+	}
+	
+	private void drawBody() {
+		double x = get
 	}
 
 /* Constants for the simple version of the picture (in pixels) */
@@ -97,4 +102,8 @@ public class HangmanCanvas extends GCanvas {
 	
 	/** Label displaying the characters that have been incorrectly guessed */
 	private GLabel incorrectChars;
+	
+	/** This double notes the y-coordinate of the scaffold. It was made an instance variable
+	 * to use it as a reference point when creating hangman's body parts.*/
+	private double scaffoldY;
 }
