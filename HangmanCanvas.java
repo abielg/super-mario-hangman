@@ -8,7 +8,8 @@ import acm.graphics.*;
 
 public class HangmanCanvas extends GCanvas {
 
-/** Resets the display so that only the scaffold appears */
+	/* Method: reset */
+	/** Resets the display so that only the scaffold appears */
 	public void reset() {
 		this.removeAll();
 		double scaffoldX = (getWidth() / 2) - BEAM_LENGTH;
@@ -32,21 +33,21 @@ public class HangmanCanvas extends GCanvas {
 		add(incorrectChars, LABEL_X_OFFSET, getHeight() - INCORRECT_CHARS_Y_OFFSET);
 	}
 
-/**
- * Updates the word on the screen to correspond to the current
- * state of the game.  The argument string shows what letters have
- * been guessed so far; unguessed letters are indicated by hyphens.
- */
+	/* Method: displayWord */
+	/** Updates the word on the screen to correspond to the current
+	 * state of the game.  The argument string shows what letters have
+	 * been guessed so far; unguessed letters are indicated by hyphens.
+	 */
 	public void displayWord(String word) {
 		wordDisplayed.setLabel(word);
 	}
 
-/**
- * Updates the display to correspond to an incorrect guess by the
- * user.  Calling this method causes the next body part to appear
- * on the scaffold and adds the letter to the list of incorrect
- * guesses that appears at the bottom of the window.
- */
+	/* Method: noteIncorrectGuess */
+	/** Updates the display to correspond to an incorrect guess by the
+	 * user.  Calling this method causes the next body part to appear
+	 * on the scaffold and adds the letter to the list of incorrect
+	 * guesses that appears at the bottom of the window.
+ 	 */
 	public void noteIncorrectGuess(char letter) {
 		String chars = incorrectChars.getLabel();
 		incorrectChars.setLabel(chars + letter);
@@ -64,14 +65,69 @@ public class HangmanCanvas extends GCanvas {
 		}
 	}
 	
+	/* Method: drawHead */
+	/** Draws the head of the hangman */
 	private void drawHead() {
 		double x = (getWidth() / 2) - HEAD_RADIUS;
 		double y = scaffoldY + ROPE_LENGTH;
 		add(new GOval(x, y, HEAD_RADIUS * 2, HEAD_RADIUS * 2));
 	}
 	
+	/* Method: drawBody */
+	/** Draws the body of the hangman */
 	private void drawBody() {
-		double x = get
+		double x1 = getWidth() / 2;
+		double y1 = scaffoldY + ROPE_LENGTH + HEAD_RADIUS * 2;
+		add(new GLine(x1, y1, x1, y1 + BODY_LENGTH));
+	}
+	
+	/* Method: drawArm */
+	/** Draws either the left or right arm of the hangman.
+	 * @param direction Determines which arm is going to be drawn - left or right. 
+	 */
+	private void drawArm(int direction) {
+		//upper arm coordinates
+		double x1 = getWidth() / 2;
+		double y1 = scaffoldY + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD;
+		double x2 = x1 + (direction * UPPER_ARM_LENGTH);
+		double y2 = y1;
+		
+		//add upper arm to canvas
+		add(new GLine(x1, y1, x2, y2));
+		
+		//add lower arm to canvas
+		add(new GLine(x2, y2, x2, (y2 + LOWER_ARM_LENGTH)));
+	}
+	
+	/* Method: drawLeg */
+	/** Draws either the left or right leg of the hangman.
+	 * @param direction Determines which leg is going to be drawn - left or right.
+	 */
+	private void drawLeg(int direction) {
+		//hip coordinates
+		double x1 = getWidth() / 2;
+		double y1 = scaffoldY + (HEAD_RADIUS * 2) + BODY_LENGTH;
+		double x2 = x1 + (direction * HIP_WIDTH);
+		double y2 = y1;
+		
+		//add hip
+		add(new GLine(x1, y1, x2, y2));
+		
+		//add leg
+		add(new GLine(x2, y2, x2, (y2 + LEG_LENGTH)));
+	}
+	
+	/* Method: drawFoot */
+	/** Draws either the right or the left foot of the hangman.
+	 * @param direction Determines which foot is to be drawn - left or right.
+	 */
+	private void drawFoot(int direction) {
+		double x1 = (getWidth() / 2) + (HIP_WIDTH * direction);
+		double y1 = scaffoldY + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH;
+		double x2 = x1 + (direction * FOOT_LENGTH);
+		double y2 = y1;
+		
+		add(new GLine(x1, y1, x2, y2));
 	}
 
 /* Constants for the simple version of the picture (in pixels) */
