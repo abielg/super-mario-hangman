@@ -88,7 +88,7 @@ public class HangmanCanvas extends GCanvas {
 	private void drawArm(int direction) {
 		//upper arm coordinates
 		double x1 = getWidth() / 2;
-		double y1 = scaffoldY + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD;
+		double y1 = scaffoldY + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD;
 		double x2 = x1 + (direction * UPPER_ARM_LENGTH);
 		double y2 = y1;
 		
@@ -106,7 +106,7 @@ public class HangmanCanvas extends GCanvas {
 	private void drawLeg(int direction) {
 		//hip coordinates
 		double x1 = getWidth() / 2;
-		double y1 = scaffoldY + (HEAD_RADIUS * 2) + BODY_LENGTH;
+		double y1 = scaffoldY + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH;
 		double x2 = x1 + (direction * HIP_WIDTH);
 		double y2 = y1;
 		
@@ -123,7 +123,7 @@ public class HangmanCanvas extends GCanvas {
 	 */
 	private void drawFoot(int direction) {
 		double x1 = (getWidth() / 2) + (HIP_WIDTH * direction);
-		double y1 = scaffoldY + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH;
+		double y1 = scaffoldY + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH;
 		double x2 = x1 + (direction * FOOT_LENGTH);
 		double y2 = y1;
 		
@@ -142,13 +142,13 @@ public class HangmanCanvas extends GCanvas {
 	private static final int HIP_WIDTH = 36;
 	private static final int LEG_LENGTH = 108;
 	private static final int FOOT_LENGTH = 28;
-	private static final int SCAFFOLD_VERT_OFFSET = 0;
+	private static final int SCAFFOLD_VERT_OFFSET = 40;
 	
 	/** Distance from left edge of canvas to the word and incorrect character labels */
 	private static final int LABEL_X_OFFSET = 25;
 	
 	/** Distance from bottom of canvas to the y-coordinate of the word label */
-	private static final int WORD_Y_OFFSET = 60;
+	private static final int WORD_Y_OFFSET = 20;
 	
 	/**Distance from the bottom of canvas to the y-coordinate of the incorrect character label */
 	private static final int INCORRECT_CHARS_Y_OFFSET = 20;
