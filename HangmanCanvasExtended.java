@@ -61,9 +61,9 @@ public class HangmanCanvasExtended extends GCanvas {
 		int incorrectGuesses = incorrectChars.getLabel().length();
 		
 		switch (incorrectGuesses) {
-			case 1: drawHead(); break;
-			case 2:drawBody(); break;
-			case 3: drawArm(-1); break;
+			case 1: drawArm(-1); break;
+			case 2:drawHead(); break;
+			case 3: drawBody(); break;
 			case 4: drawArm(1); break;
 			case 5: drawLeg(-1); break;
 			case 6: drawLeg(1); break;
@@ -106,7 +106,7 @@ public class HangmanCanvasExtended extends GCanvas {
 	private void drawLeg(int direction) {
 		GImage leg;
 		if (direction == -1)
-			leg = new GImage("Right Leg");
+			leg = new GImage("Right Leg.png");
 		else
 			leg = new GImage("Left Leg.png");
 		add(leg, MARIO_X, MARIO_Y);
@@ -159,8 +159,8 @@ public class HangmanCanvasExtended extends GCanvas {
 	private double scaffoldY;
 	
 	/** The x coordinate of all of Mario's body parts. */
-	private static final double MARIO_X = 120.0;
+	private static final double MARIO_X = 150.0;
 	
 	/** The y coordinate of all of Mario's body parts. */
-	private static final double MARIO_Y = 40.0;
+	private static final double MARIO_Y = 80.0;
 }
