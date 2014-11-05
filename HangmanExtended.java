@@ -47,7 +47,7 @@ public class HangmanExtended extends ConsoleProgram {
     /* Method: init */
     /** Creates a canvas object and adds it to the window.*/
     public void init() {
-    	canvas = new HangmanCanvas();
+    	canvas = new HangmanCanvasExtended();
     	add(canvas);
     }
     
