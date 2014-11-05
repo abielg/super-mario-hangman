@@ -1,7 +1,7 @@
 /*
  * File: Hangman.java
  * ------------------
- * This program will eventually play the Hangman game from
+ * This program plays the Hangman game from
  * Assignment #4.
  */
 
@@ -21,7 +21,7 @@ public class Hangman extends ConsoleProgram {
 		
 		println("Welcome to Hangman!");
 		displayOfWord = createDisplayOfWord(word);
-		setUpCanvas();
+		canvas.reset();
 		canvas.displayWord(displayOfWord);
 		
 		while(NUM_GUESSES > 0) {
@@ -44,13 +44,11 @@ public class Hangman extends ConsoleProgram {
 		}
 	}
     
+    /* Method: init */
+    /** Creates a canvas object and adds it to the window.*/
     public void init() {
     	canvas = new HangmanCanvas();
     	add(canvas);
-    }
-    
-    private void setUpCanvas() {
-    	canvas.reset();
     }
     
     /* Method: characterIsCorrect */
@@ -140,6 +138,7 @@ public class Hangman extends ConsoleProgram {
     /** String displayed to the user, with dashes for unsolved characters*/
     private String displayOfWord;
     
+    /** The canvas where the graphics of the program will be shown. */
     private HangmanCanvas canvas;
 
 }
