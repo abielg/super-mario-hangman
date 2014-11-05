@@ -1,8 +1,8 @@
 /*
  * File: HangmanLexicon.java
  * -------------------------
- * This file contains a stub implementation of the HangmanLexicon
- * class that you will reimplement for Part III of the assignment.
+ * This file imports a list of words and chooses one of them
+ * to be the random word that the user has to guess.
  */
 
 import acm.util.*;
@@ -11,7 +11,10 @@ import java.io.*;
 import java.util.*;
 
 public class HangmanLexicon {
-	
+	/* Method: class constructor */
+	/** Creates a BufferedReader to read all words from the lexicon list, and 
+	 * adds them to an array list.
+	 */
 	public HangmanLexicon() {
 		BufferedReader rd = null;
 		try {
@@ -28,13 +31,15 @@ public class HangmanLexicon {
 				throw new ErrorException(ex);
 			}
 	}
-
-/** Returns the number of words in the lexicon. */
+	
+	/* Method: getWordCount */
+	/** Returns the number of words in the lexicon. */
 	public int getWordCount() {
 		return wordList.size();
 	}
-
-/** Returns the word at the specified index. */
+	
+	/* Method: getWord */
+	/** Returns the word at the specified index of the array list. */
 	public String getWord() {
 		int index = rgen.nextInt(0,getWordCount());
 		return wordList.get(index);

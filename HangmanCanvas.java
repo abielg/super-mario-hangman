@@ -14,6 +14,7 @@ public class HangmanCanvas extends GCanvas {
 		this.removeAll();
 		double scaffoldX = (getWidth() / 2) - BEAM_LENGTH;
 		scaffoldY = ((getHeight() - SCAFFOLD_HEIGHT) / 2) - SCAFFOLD_VERT_OFFSET;
+		
 		//scaffold
 		add(new GLine(scaffoldX, scaffoldY, scaffoldX, scaffoldY + SCAFFOLD_HEIGHT));
 		//beam
