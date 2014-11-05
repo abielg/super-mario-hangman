@@ -5,10 +5,8 @@
  */
 
 import java.awt.Color;
-import acm.program.*;
+
 import acm.graphics.*;
-
-
 
 public class HangmanCanvasExtended extends GCanvas {
 
@@ -16,21 +14,6 @@ public class HangmanCanvasExtended extends GCanvas {
 	/** Resets the display so that only the scaffold appears */
 	public void reset() {
 		this.removeAll();
-		
-		//Creates Mario compound object for when he falls
-		allOfMario = new GCompound();
-		add(allOfMario, MARIO_X, MARIO_Y);
-		
-		//Add Super Mario background
-		GImage background = new GImage("hangmanExtensionbckg.png");
-		background.setSize(getWidth(), getHeight());
-		add(background);
-		background.sendToBack();
-		
-		//Add "front background" (for when Mario falls at the end of the game)
-		frontBckg = new GImage("frontBackground.png");
-		add(frontBckg, 0, getHeight() - frontBckg.getHeight());
-		background.sendToFront();
 		
 		//The word that needs to be guessed will be added to the canvas from the very beginning,
 		//and it will be updated with each method call to "displayWord".
@@ -44,6 +27,12 @@ public class HangmanCanvasExtended extends GCanvas {
 		incorrectChars.setFont("Helvetica-22");
 		incorrectChars.setColor(Color.WHITE);
 		add(incorrectChars, INCORRECT_CHARS_X_OFFSET, getHeight() - INCORRECT_CHARS_Y_OFFSET);
+		
+		//Add Super Mario background
+		GImage background = new GImage("hangmanExtensionbckg.png");
+		background.setSize(getWidth(), getHeight());
+		add(background);
+		background.sendToBack();
 	}
 
 	/* Method: displayWord */
@@ -75,31 +64,21 @@ public class HangmanCanvasExtended extends GCanvas {
 			case 6: drawLeg(1); break;
 			case 7: drawFoot(-1); break;
 			case 8: drawFoot(1);
-					moveMario();
-		}
-	}
-	
-	private void moveMario() {
-		while (allOfMario.getY() < frontBckg.getY()) {
-			allOfMario.move(0,3);
-			control.pause(10);
 		}
 	}
 	
 	/* Method: drawHead */
 	/** Draws the head of the Mario */
 	private void drawHead() {
-		head = new GImage("Head.png");
+		GImage head = new GImage("Head.png");
 		add(head, MARIO_X, MARIO_Y);
-		allOfMario.add(head);
 	}
 	
 	/* Method: drawBody */
 	/** Draws the body of the Mario */
 	private void drawBody() {		
-		body = new GImage("Body.png");
+		GImage body = new GImage("Body.png");
 		add(body, MARIO_X, MARIO_Y);
-		allOfMario.add(body);
 	}
 	
 	/* Method: drawArm */
@@ -107,15 +86,14 @@ public class HangmanCanvasExtended extends GCanvas {
 	 * @param direction Determines which arm is going to be drawn - left or right. 
 	 */
 	private void drawArm(int direction) {
+		GImage arm;
 		if (direction == -1) {
-			rightArm = new GImage("Right Arm.png");
-			add(rightArm, MARIO_X, MARIO_Y);
-			allOfMario.add(rightArm);
+			arm = new GImage("Right Arm.png");
+			add(arm, MARIO_X, MARIO_Y);
 		}
 		else {
-			leftArm = new GImage("Left Arm.png");
-			add(leftArm, MARIO_X, MARIO_Y);
-			allOfMario.add(leftArm);
+			arm = new GImage("Left Arm.png");
+			add(arm, MARIO_X, MARIO_Y);
 		}
 	}
 	
@@ -124,16 +102,12 @@ public class HangmanCanvasExtended extends GCanvas {
 	 * @param direction Determines which leg is going to be drawn - left or right.
 	 */
 	private void drawLeg(int direction) {
-		if (direction == -1) {
-			rightLeg = new GImage("Right Leg.png");
-			add(rightLeg, MARIO_X, MARIO_Y);
-			allOfMario.add(rightLeg);
-		}
-		else {
-			leftLeg = new GImage("Left Leg.png");
-			add(leftLeg, MARIO_X, MARIO_Y);
-			allOfMario.add(leftLeg);
-		}
+		GImage leg;
+		if (direction == -1)
+			leg = new GImage("Right Leg.png");
+		else
+			leg = new GImage("Left Leg.png");
+		add(leg, MARIO_X, MARIO_Y);
 	}
 	
 	/* Method: drawFoot */
@@ -141,16 +115,12 @@ public class HangmanCanvasExtended extends GCanvas {
 	 * @param direction Determines which foot is to be drawn - left or right.
 	 */
 	private void drawFoot(int direction) {
-		if (direction == -1) {
-			rightFoot = new GImage("Right Foot.png");
-			add(rightFoot, MARIO_X, MARIO_Y);
-			allOfMario.add(rightFoot);
-		}
-		else {
-			leftFoot = new GImage("Left Foot.png");
-			add(leftFoot, MARIO_X, MARIO_Y);
-			allOfMario.add(leftFoot);
-		}
+		GImage foot;
+		if (direction == -1)
+			foot = new GImage("Right Foot.png");
+		else
+			foot = new GImage("Left Foot.png");
+		add(foot, MARIO_X, MARIO_Y);
 	}
 
 /* Constants for the simple version of the picture (in pixels) */
@@ -162,7 +132,7 @@ public class HangmanCanvasExtended extends GCanvas {
 	private static final int WORD_Y_OFFSET = 15;
 	
 	/**Distance from the left edge of canvas to the x-coordinate of the incorrect character label */
-	private static final int INCORRECT_CHARS_X_OFFSET = 270;
+	private static final int INCORRECT_CHARS_X_OFFSET = 240;
 	
 	/**Distance from the bottom of canvas to the y-coordinate of the incorrect character label */
 	private static final int INCORRECT_CHARS_Y_OFFSET = 20;
@@ -182,26 +152,4 @@ public class HangmanCanvasExtended extends GCanvas {
 	
 	/** The y coordinate of all of Mario's body parts. */
 	private static final double MARIO_Y = 80.0;
-	
-	private GImage head;
-	
-	private GImage body;
-	
-	private GImage rightArm;
-	
-	private GImage leftArm;
-	
-	private GImage leftLeg;
-	
-	private GImage rightLeg;
-	
-	private GImage rightFoot;
-	
-	private GImage leftFoot;
-	
-	private GCompound allOfMario;
-	
-	private GImage frontBckg;
-	
-	GraphicsProgram control;
 }
