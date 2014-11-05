@@ -90,6 +90,12 @@ public class HangmanCanvasExtended extends GCanvas {
 		double x1 = getWidth() / 2;
 		double y1 = scaffoldY + ROPE_LENGTH + HEAD_RADIUS * 2;
 		add(new GLine(x1, y1, x1, y1 + BODY_LENGTH));
+		
+		double x = (getWidth() / 2) - HEAD_RADIUS;
+		double y = scaffoldY + ROPE_LENGTH;
+		GImage body = new GImage("Body.png");
+		//head.setSize(getWidth(), getHeight());
+		add(body, x, y);
 	}
 	
 	/* Method: drawArm */
