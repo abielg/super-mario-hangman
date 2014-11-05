@@ -11,14 +11,15 @@ import acm.util.*;
 import java.awt.*;
 
 public class Hangman extends ConsoleProgram {
-
+	
+	/* Methd: run */
+	/** Runs the Hangman game */
     public void run() {
     	//Creating the lexicon and choosing a random word.
 		HangmanLexicon listOfWords = new HangmanLexicon();
 		String word = listOfWords.getWord();
 		
 		println("Welcome to Hangman!");
-		NUM_GUESSES = 8;
 		displayOfWord = createDisplayOfWord(word);
 		setUpCanvas();
 		canvas.displayWord(displayOfWord);
@@ -134,7 +135,7 @@ public class Hangman extends ConsoleProgram {
     }
        
     /** Number of guesses remaining */
-    private int NUM_GUESSES;
+    private int NUM_GUESSES = 8;
     
     /** String displayed to the user, with dashes for unsolved characters*/
     private String displayOfWord;
