@@ -73,61 +73,43 @@ public class HangmanCanvasExtended extends GCanvas {
 	}
 	
 	/* Method: drawHead */
-	/** Draws the head of the hangman */
+	/** Draws the head of the Mario */
 	private void drawHead() {
-		double x = (getWidth() / 2) - HEAD_RADIUS;
-		double y = scaffoldY + ROPE_LENGTH;
-		add(new GOval(x, y, HEAD_RADIUS * 2, HEAD_RADIUS * 2));
-		
 		GImage head = new GImage("Head.png");
-		//head.setSize(getWidth(), getHeight());
-		add(head, 120, 70);
+		add(head, MARIO_X, MARIO_Y);
 	}
 	
 	/* Method: drawBody */
-	/** Draws the body of the hangman */
+	/** Draws the body of the Mario */
 	private void drawBody() {		
-		double x = (getWidth() / 2) - HEAD_RADIUS;
-		double y = scaffoldY + ROPE_LENGTH;
 		GImage body = new GImage("Body.png");
-		//head.setSize(getWidth(), getHeight());
-		add(body, x, y);
+		add(body, MARIO_X, MARIO_Y);
 	}
 	
 	/* Method: drawArm */
-	/** Draws either the left or right arm of the hangman.
+	/** Draws either the left or right arm of  Mario.
 	 * @param direction Determines which arm is going to be drawn - left or right. 
 	 */
 	private void drawArm(int direction) {
-		//upper arm coordinates
-		double x1 = getWidth() / 2;
-		double y1 = scaffoldY + ROPE_LENGTH + (HEAD_RADIUS * 2) + ARM_OFFSET_FROM_HEAD;
-		double x2 = x1 + (direction * UPPER_ARM_LENGTH);
-		double y2 = y1;
-		
-		//add upper arm to canvas
-		add(new GLine(x1, y1, x2, y2));
-		
-		//add lower arm to canvas
-		add(new GLine(x2, y2, x2, (y2 + LOWER_ARM_LENGTH)));
+		GImage arm;
+		if (direction == -1)
+			arm = new GImage("Right Arm.png");
+		else
+			arm = new GImage("Left Arm.png");
+		add(arm, MARIO_X, MARIO_Y);
 	}
 	
 	/* Method: drawLeg */
-	/** Draws either the left or right leg of the hangman.
+	/** Draws either the left or right leg of  Mario.
 	 * @param direction Determines which leg is going to be drawn - left or right.
 	 */
 	private void drawLeg(int direction) {
-		//hip coordinates
-		double x1 = getWidth() / 2;
-		double y1 = scaffoldY + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH;
-		double x2 = x1 + (direction * HIP_WIDTH);
-		double y2 = y1;
-		
-		//add hip
-		add(new GLine(x1, y1, x2, y2));
-		
-		//add leg
-		add(new GLine(x2, y2, x2, (y2 + LEG_LENGTH)));
+		GImage leg;
+		if (direction == -1)
+			leg = new GImage("Right Leg");
+		else
+			leg = new GImage("Left Leg.png");
+		add(leg, MARIO_X, MARIO_Y);
 	}
 	
 	/* Method: drawFoot */
@@ -135,12 +117,12 @@ public class HangmanCanvasExtended extends GCanvas {
 	 * @param direction Determines which foot is to be drawn - left or right.
 	 */
 	private void drawFoot(int direction) {
-		double x1 = (getWidth() / 2) + (HIP_WIDTH * direction);
-		double y1 = scaffoldY + ROPE_LENGTH + (HEAD_RADIUS * 2) + BODY_LENGTH + LEG_LENGTH;
-		double x2 = x1 + (direction * FOOT_LENGTH);
-		double y2 = y1;
-		
-		add(new GLine(x1, y1, x2, y2));
+		GImage foot;
+		if (direction == -1)
+			foot = new GImage("Right Foot.png");
+		else
+			foot = new GImage("Left Foot.png");
+		add(foot, MARIO_X, MARIO_Y);
 	}
 
 /* Constants for the simple version of the picture (in pixels) */
@@ -176,5 +158,9 @@ public class HangmanCanvasExtended extends GCanvas {
 	 * to use it as a reference point when creating hangman's body parts.*/
 	private double scaffoldY;
 	
-	//private static final double MARIO_X = (getWidth() / 2);
+	/** The x coordinate of all of Mario's body parts. */
+	private static final double MARIO_X = 120.0;
+	
+	/** The y coordinate of all of Mario's body parts. */
+	private static final double MARIO_Y = 40.0;
 }
