@@ -23,6 +23,7 @@ public class Hangman extends ConsoleProgram {
 		setUpCanvas();
 		
 		while(NUM_GUESSES > 0) {
+			canvas.displayWord(displayOfWord);
 			println("The word now looks like this: " + displayOfWord);
 			println("You have " + NUM_GUESSES + " guesses left.");
 			String guessString = readLine("Your guess: ");
