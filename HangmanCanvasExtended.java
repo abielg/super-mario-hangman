@@ -81,16 +81,12 @@ public class HangmanCanvasExtended extends GCanvas {
 		
 		GImage head = new GImage("Head.png");
 		//head.setSize(getWidth(), getHeight());
-		add(head, x, y);
+		add(head, 100, 30);
 	}
 	
 	/* Method: drawBody */
 	/** Draws the body of the hangman */
-	private void drawBody() {
-		double x1 = getWidth() / 2;
-		double y1 = scaffoldY + ROPE_LENGTH + HEAD_RADIUS * 2;
-		add(new GLine(x1, y1, x1, y1 + BODY_LENGTH));
-		
+	private void drawBody() {		
 		double x = (getWidth() / 2) - HEAD_RADIUS;
 		double y = scaffoldY + ROPE_LENGTH;
 		GImage body = new GImage("Body.png");
@@ -179,4 +175,6 @@ public class HangmanCanvasExtended extends GCanvas {
 	/** This double notes the y-coordinate of the scaffold. It was made an instance variable
 	 * to use it as a reference point when creating hangman's body parts.*/
 	private double scaffoldY;
+	
+	private static final double MARIO_X = (getWidth() / 2);
 }
