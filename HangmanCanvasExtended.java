@@ -81,7 +81,7 @@ public class HangmanCanvasExtended extends GCanvas {
 		
 		GImage head = new GImage("Head.png");
 		//head.setSize(getWidth(), getHeight());
-		add(head, 100, 30);
+		add(head, 110, 40);
 	}
 	
 	/* Method: drawBody */
