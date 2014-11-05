@@ -15,7 +15,7 @@ public class Hangman extends ConsoleProgram {
     public void run() {
     	//Creating the lexicon and choosing a random word.
 		HangmanLexicon listOfWords = new HangmanLexicon();
-		String word = getNextWord(listOfWords);
+		String word = listOfWords.getWord();
 		
 		println("Welcome to Hangman!");
 		NUM_GUESSES = 8;
@@ -105,15 +105,6 @@ public class Hangman extends ConsoleProgram {
     	}
     }
     
-    /* Method: getNextWord */
-    /** Returns a random String from the list of word found in the lexicon.
-     * @param lexicon The list of String words
-     */
-    private String getNextWord(HangmanLexicon lexicon) {
-    	int index = rgen.nextInt(0, lexicon.getWordCount() - 1);
-    	return lexicon.getWord(index);
-    }
-    
     /* Method: createDisplayOfWord */
     /** Creates the visual representation of the secret word, returning
      * a string with an amount of dashes equal to the number of characters
@@ -141,10 +132,7 @@ public class Hangman extends ConsoleProgram {
     	else
     		return false;
     }
-    
-    /** Random number generator instance variable */
-    RandomGenerator rgen =  RandomGenerator.getInstance();
-   
+       
     /** Number of guesses remaining */
     private int NUM_GUESSES;
     
