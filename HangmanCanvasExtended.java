@@ -176,5 +176,5 @@ public class HangmanCanvasExtended extends GCanvas {
 	 * to use it as a reference point when creating hangman's body parts.*/
 	private double scaffoldY;
 	
-	private static final double MARIO_X = (getWidth() / 2);
+	//private static final double MARIO_X = (getWidth() / 2);
 }
