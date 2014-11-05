@@ -114,7 +114,7 @@ public class Hangman extends ConsoleProgram {
     private String createDisplayOfWord(String chosenWord) {
     	String result = "";
     	for (int i = 0; i < chosenWord.length(); i++ ){
-    		result += "Ð";
+    		result += "Ð ";
     	}
     	return result;
     }
