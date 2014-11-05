@@ -148,7 +148,7 @@ public class HangmanCanvas extends GCanvas {
 	private static final int LABEL_X_OFFSET = 25;
 	
 	/** Distance from bottom of canvas to the y-coordinate of the word label */
-	private static final int WORD_Y_OFFSET = 20;
+	private static final int WORD_Y_OFFSET = 60;
 	
 	/**Distance from the bottom of canvas to the y-coordinate of the incorrect character label */
 	private static final int INCORRECT_CHARS_Y_OFFSET = 20;
