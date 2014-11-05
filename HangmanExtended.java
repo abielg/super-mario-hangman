@@ -101,7 +101,6 @@ public class HangmanExtended extends ConsoleProgram {
     		println("You're completely hung.");
     		println("The word was: " + secretWord);
     		println("You lose.");
-    		canvas.moveMario();
     	}
     }
     
