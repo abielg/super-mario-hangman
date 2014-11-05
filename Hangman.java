@@ -21,9 +21,9 @@ public class Hangman extends ConsoleProgram {
 		NUM_GUESSES = 8;
 		displayOfWord = createDisplayOfWord(word);
 		setUpCanvas();
+		canvas.displayWord(displayOfWord);
 		
 		while(NUM_GUESSES > 0) {
-			canvas.displayWord(displayOfWord);
 			println("The word now looks like this: " + displayOfWord);
 			println("You have " + NUM_GUESSES + " guesses left.");
 			String guessString = readLine("Your guess: ");
@@ -38,7 +38,8 @@ public class Hangman extends ConsoleProgram {
 				else {
 					characterIsIncorrect(guessChar, word);
 				}
-			}	
+			}
+			canvas.displayWord(displayOfWord);
 		}
 	}
     
