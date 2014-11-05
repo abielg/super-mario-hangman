@@ -139,6 +139,6 @@ public class HangmanExtended extends ConsoleProgram {
     private String displayOfWord;
     
     /** The canvas where the graphics of the program will be shown. */
-    private HangmanCanvas canvas;
+    private HangmanCanvasExtended canvas;
 
 }
