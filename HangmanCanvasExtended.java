@@ -17,6 +17,20 @@ public class HangmanCanvasExtended extends GCanvas {
 	public void reset() {
 		this.removeAll();
 		
+		//Creates Mario compound object for when he falls
+		allOfMario = new GCompound();
+		
+		//Add Super Mario background
+		GImage background = new GImage("hangmanExtensionbckg.png");
+		background.setSize(getWidth(), getHeight());
+		add(background);
+		background.sendToBack();
+		
+		//Add "front background" (for when Mario falls at the end of the game)
+		frontBckg = new GImage("frontBackground.png");
+		add(frontBckg, 0, getHeight() - frontBckg.getHeight());
+		background.sendToFront();
+		
 		//The word that needs to be guessed will be added to the canvas from the very beginning,
 		//and it will be updated with each method call to "displayWord".
 		wordDisplayed = new GLabel("");
@@ -29,20 +43,6 @@ public class HangmanCanvasExtended extends GCanvas {
 		incorrectChars.setFont("Helvetica-22");
 		incorrectChars.setColor(Color.WHITE);
 		add(incorrectChars, INCORRECT_CHARS_X_OFFSET, getHeight() - INCORRECT_CHARS_Y_OFFSET);
-		
-		//Add Super Mario background
-		GImage background = new GImage("hangmanExtensionbckg.png");
-		background.setSize(getWidth(), getHeight());
-		add(background);
-		background.sendToBack();
-		
-		//Add "front background" (for when Mario falls at the end of the game
-		frontBckg = new GImage("frontBackground.png");
-		add(frontBckg, 0, getHeight() - frontBckg.getHeight());
-		background.sendToFront();
-		
-		//Creates Mario compound object for when he falls
-		allOfMario = new GCompound();
 	}
 
 	/* Method: displayWord */
