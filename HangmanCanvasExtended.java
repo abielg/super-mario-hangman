@@ -78,6 +78,10 @@ public class HangmanCanvasExtended extends GCanvas {
 		double x = (getWidth() / 2) - HEAD_RADIUS;
 		double y = scaffoldY + ROPE_LENGTH;
 		add(new GOval(x, y, HEAD_RADIUS * 2, HEAD_RADIUS * 2));
+		
+		GImage head = new GImage("Head.png");
+		//head.setSize(getWidth(), getHeight());
+		add(head);
 	}
 	
 	/* Method: drawBody */
