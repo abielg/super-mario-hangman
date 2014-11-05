@@ -19,6 +19,7 @@ public class HangmanCanvasExtended extends GCanvas {
 		
 		//Creates Mario compound object for when he falls
 		allOfMario = new GCompound();
+		add(allOfMario, MARIO_X, MARIO_Y);
 		
 		//Add Super Mario background
 		GImage background = new GImage("hangmanExtensionbckg.png");
