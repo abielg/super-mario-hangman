@@ -32,6 +32,12 @@ public class HangmanCanvasExtended extends GCanvas {
 		incorrectChars = new GLabel("");
 		incorrectChars.setFont("Helvetica-15");
 		add(incorrectChars, LABEL_X_OFFSET, getHeight() - INCORRECT_CHARS_Y_OFFSET);
+		
+		//Add Super Mario background
+		GImage background = new GImage("hangmanExtensionbckg.png");
+		background.setSize(getWidth(), getHeight());
+		add(background);
+		background.sendToBack();
 	}
 
 	/* Method: displayWord */
