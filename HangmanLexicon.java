@@ -11,6 +11,7 @@ import java.io.*;
 import java.util.*;
 
 public class HangmanLexicon {
+	
 	/* Method: class constructor */
 	/** Creates a BufferedReader to read all words from the lexicon list, and 
 	 * adds them to an array list.
