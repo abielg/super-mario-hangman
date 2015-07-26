@@ -1,6 +1,7 @@
 # super-mario-hangman
 
 A hangman game with a Super Mario theme coded in Java for an academic project.
+Developed using the Eclipse IDE.
 
 Gameplay screenshots:
 
