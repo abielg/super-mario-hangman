@@ -16,7 +16,7 @@ public class HangmanExtended extends ConsoleProgram {
 	/** Runs the Hangman game */
     public void run() {
     	//Creating the lexicon and choosing a random word.
-		HangmanLexicon listOfWords = new HangmanLexicon();
+		HangmanLexicon listOfWords = new HangmanLexiconExtended();
 		String word = listOfWords.getWord();
 		
 		println("Welcome to Hangman!");
