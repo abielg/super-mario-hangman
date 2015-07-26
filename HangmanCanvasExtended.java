@@ -29,7 +29,7 @@ public class HangmanCanvasExtended extends GCanvas {
 		add(incorrectChars, INCORRECT_CHARS_X_OFFSET, getHeight() - INCORRECT_CHARS_Y_OFFSET);
 		
 		//Add Super Mario background
-		GImage background = new GImage("hangmanExtensionbckg.png");
+		GImage background = new GImage("BodyParts/hangmanExtensionbckg.png");
 		background.setSize(getWidth(), getHeight());
 		add(background);
 		background.sendToBack();
@@ -70,14 +70,14 @@ public class HangmanCanvasExtended extends GCanvas {
 	/* Method: drawHead */
 	/** Draws the head of the Mario */
 	private void drawHead() {
-		GImage head = new GImage("Head.png");
+		GImage head = new GImage("BodyParts/Head.png");
 		add(head, MARIO_X, MARIO_Y);
 	}
 	
 	/* Method: drawBody */
 	/** Draws the body of the Mario */
 	private void drawBody() {		
-		GImage body = new GImage("Body.png");
+		GImage body = new GImage("BodyParts/Body.png");
 		add(body, MARIO_X, MARIO_Y);
 	}
 	
@@ -88,11 +88,11 @@ public class HangmanCanvasExtended extends GCanvas {
 	private void drawArm(int direction) {
 		GImage arm;
 		if (direction == -1) {
-			arm = new GImage("Right Arm.png");
+			arm = new GImage("BodyParts/Right Arm.png");
 			add(arm, MARIO_X, MARIO_Y);
 		}
 		else {
-			arm = new GImage("Left Arm.png");
+			arm = new GImage("BodyParts/Left Arm.png");
 			add(arm, MARIO_X, MARIO_Y);
 		}
 	}
@@ -104,9 +104,9 @@ public class HangmanCanvasExtended extends GCanvas {
 	private void drawLeg(int direction) {
 		GImage leg;
 		if (direction == -1)
-			leg = new GImage("Right Leg.png");
+			leg = new GImage("BodyParts/Right Leg.png");
 		else
-			leg = new GImage("Left Leg.png");
+			leg = new GImage("BodyParts/Left Leg.png");
 		add(leg, MARIO_X, MARIO_Y);
 	}
 	
@@ -117,9 +117,9 @@ public class HangmanCanvasExtended extends GCanvas {
 	private void drawFoot(int direction) {
 		GImage foot;
 		if (direction == -1)
-			foot = new GImage("Right Foot.png");
+			foot = new GImage("BodyParts/Right Foot.png");
 		else
-			foot = new GImage("Left Foot.png");
+			foot = new GImage("BodyParts/Left Foot.png");
 		add(foot, MARIO_X, MARIO_Y);
 	}
 
